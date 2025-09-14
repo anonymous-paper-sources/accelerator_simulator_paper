@@ -227,13 +227,11 @@ read_and_verify_vn_tree_path(unsigned long long clock, unsigned long long pz_vir
     unsigned long long pz_phy_addr)
 {
     // If VN is in the VNSTORE, just return it
-    // NOTE: VNSTORE works with virtual addresses
     long long vn = vns_get(VNSTORE, pz_virt_addr);
     VNSTORE_ACCESS_LOG(VNSTORE_acc_log, clock, pz_virt_addr, R, vn >= 0 ? 1 : 0);
     if (vn >= 0) return vn;
 
     // If not in the VNSTORE, read from the VNCACHE
-    // NOTE: VNCACHE works with physical addresses
     read_and_verify_vn_tree_path_to_vncache(clock, pz_phy_addr);
 
     // Actually obtain the vn from the virtual storage
