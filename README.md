@@ -1,1 +1,1 @@
-# accelerator_simulator_paper
+# Accelerator simulator paper repository
